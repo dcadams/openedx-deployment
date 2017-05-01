@@ -99,7 +99,6 @@ fix this, make sure java-7 is installed, update alternatives to use java 7, manu
 than restart ansible script:
 
 ```bash
-
 ubuntu@director> ssh -i analytics.pem ubuntu@analytics_ip
 ubuntu@analytics> sudo apt-get install openjdk-7-jdk -y
 ubuntu@analytics> sudo apt-get update-alternatives --config java  # interactive session - choose entry with
@@ -200,16 +199,14 @@ The Insights application has a number of [waffle feature flags and
 switches](https://waffle.readthedocs.io/en/v0.9/types.html) which are disabled by default.  These can be used to disable
 new features, so that they can be enabled when and if the data becomes ready.
 
-Feature "flags" can be enabled for specific groups of users:
+Feature "flags" can be enabled for specific groups of users using these arguments:
 
-Argument           | Description
----------------------------------------------------------------------------------------------------------------
-`--everyone`       | Activate flag for all users.
-`--deactivate`     | Deactivate flag for all users.
-`--percent=PERCENT`| Roll out the flag for a certain percentage of users.  Takes a number between 0.0 and 100.0
-`--superusers`     | Turn on the flag for Django superusers.
-`--staff`          | Turn on the flag for Django staff.
-`--authenticated`  | Turn on the flag for logged in users.
+* `--everyone`: Activate flag for all users.
+* `--deactivate`: Deactivate flag for all users.
+* `--percent=PERCENT`: Roll out the flag for a certain percentage of users.  Takes a number between 0.0 and 100.0
+* `--superusers`: Turn on the flag for Django superusers.
+* `--staff`: Turn on the flag for Django staff.
+* `--authenticated`: Turn on the flag for logged in users.
 
 Run the following command on your Insights instance from within the Insights env:
 

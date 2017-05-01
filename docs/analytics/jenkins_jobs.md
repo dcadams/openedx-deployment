@@ -80,7 +80,7 @@ It makes sense to try to produce even load on the server by running tasks throug
 # Commands
 
 These example commands rely heavily on environment variables defined in [`jenkins_env`](resources/jenkins_env).  See
-[Jenkins Env and Configuration Overrides](AWS_deployment_tutorial.md#jenkins-env-and-configuration-overrides) for a
+[Jenkins Env and Configuration Overrides](aws_setup.md#jenkins-env-and-configuration-overrides) for a
 discussion of these environment variables.
 
 One can do without a `jenkins_env` file by omitting the `. /home/jenkins/jenkins_env` command from the shell script

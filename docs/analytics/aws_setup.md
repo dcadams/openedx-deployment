@@ -16,7 +16,7 @@ We run the analytics ansible playbooks from a separate EC2 `director` instance, 
 installed](#director-setup).
 
 As with the edxapp setup, we'll be running the analytics playbooks from the EC2 `director` instance created during the
-[AWS Deployment](AWS_deployment_tutorial.md#director-ec2).
+[AWS Deployment](#director-ec2).
 
 General Security Considerations
 ===============================
