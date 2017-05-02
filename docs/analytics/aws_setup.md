@@ -304,36 +304,25 @@ If you're upgrading an existing analytics deployment, we strongly recommend you 
 the following steps.  Schema changes aren't well handled in analytics-land yet, and so it's best to let the analytics
 tasks and API deployment process create their tables and fields.
 
-Launch a new `analytics` RDS instance (see [RDS](../shared/rds.md)).  Ensure that both the new `analytics` RDS, and the
-existing `edxapp` RDS, are members of the [`EMR RDS` security group](#emr-security-groups) created above.
-
-To add a security group to an existing RDS instance:
-
-* Go to the RDS dashboard in the AWS console,
-* Select a single RDS instance to modify.
-* `Instance Actions -> Modify -> Security Group`: add `EMR RDS` to allowed list of security groups.
-* Click `Continue` and `Modify DB Instance` to save.
-
-Ensure the Insights/Analytics API instance can connect to it by ssh'ing to the EC2 insstance, then:
-
-```bash
-telnet analytics-rds-name.other-stuff.rds.amazonaws.com 3306
-```
-
-Confirm that you see a "Connected to ..." message. Type Ctrl-D to exit the telnet shell.
+* Launch a new `analytics` RDS instance (see [RDS](../shared/rds.md)).
+* Ensure that both the new `analytics` RDS, and the existing `edxapp` RDS, are members of the [`EMR RDS` security
+  group](#emr-security-groups) created above.  See [Modify Security Groups](../shared/rds.md#modify-security-groups) for
+instructions on how to add a security group to an existing RDS instance.
+* [Test the RDS instance](../shared/rds.md#test-access) from the Insights/Analytics API instance to ensure it can
+  connect to the new RDS instance.
 
 ### Create analytics databases and user
 
 Create `dashboard`, `analytics-api`, and `reports` databases, and `analytics` user with password:
 
-From the director instance, run the following command with the root RDS user:
+From the director instance, run the following command with the root RDS user to launch the mysql shell:
 
 ```bash
 mysql -h analytics-rds-name.other-stuff.rds.amazonaws.com -u root -p
 # Enter root user password
 ```
 
-Run this SQL from the mysql shell:
+Run this SQL in the mysql shell:
 
 ```sql
 CREATE DATABASE `dashboard` default character set utf8;
